@@ -1,0 +1,5 @@
+# local
+#git clone file://${HOME}/git/slide-impa-final.git
+#git remote add origin file://${HOME}/git/slide-impa-final.git
+# record pass
+#eval `ssh-agent`
