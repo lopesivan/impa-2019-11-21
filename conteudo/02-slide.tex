@@ -1,0 +1,51 @@
+\section{Método cognitivo}
+
+\begin{frame}
+\frametitle{fluxo de vídeo}
+
+Quando a entrada é um fluxo de vídeo, pode-se explorar a correlação temporal
+    para facilitar a Reconstrução 3D, garantindo que a reconstrução seja suave
+    e consistente em todos os quadros do vídeo corrente.
+
+Além disso, a entrada pode representar um ou vários objetos 3D.  objetos
+    pertencentes a categorias de formas conhecidas ou desconhecidas.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Representacão}
+
+A representação é crucial para a escolha da
+arquitetura de rede. Ele também afeta a computação
+eficiência e qualidade da reconstrução.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{arquitetura de backbone}
+
+Uma variedade de arquiteturas de rede tem sido utilizada para melhorar
+    implementar o preditor $f$. Uma arquitetura de backbone, que pode ser
+    diferente durante o treinamento e o teste, é composto por um codificador
+    $h$ seguido de um decodificador $g$, ou seja, $f=g \circ h$.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{arquitetura de backbone}
+
+O codificador mapeia a entrada em uma variável latente $x$, referida como
+    um vetor de característica ou um código, usando uma sequência de operações
+    de pooling, seguidas de operações totalmente conectadas a supervisão,
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Gerador}
+
+O decodificador, também chamado de gerador, decodifica o vetor de
+    característica na saída desejada usando camadas totalmente conectadas ou
+    uma rede de desconvolução (um seqüência de operações de convolução e
+    upsampling, também parâmetros podem ser conhecidos ou desconhecidos )
+
+\end{frame}
