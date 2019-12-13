@@ -1,0 +1,98 @@
+\section{definições}
+
+\begin{frame}
+\frametitle{Otimização matemática}
+
+
+
+Seja $I = \{I_{k}, k = 1, \cdots, n\}$ um conjunto
+de $ n \geq 1 $ imagens RGB de um ou vários objetos $X$.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Otimização matemática}
+A reconstrução 3D pode ser sintetizada como o processo de encontar o preditor
+$f_\theta$, que pode inferir uma forma $X'$ o mais próximo possível da forma
+$X$ desconhecida.
+\end{frame}
+
+\begin{frame}
+\frametitle{Otimização matemática}
+Em outras palavras a função $f_\theta$ é o minimizador da função objetiva de
+    reconstrução $L(I)=d(f_{\theta}(I), X)$. Onde $\theta$ é o conjunto de
+    parametros de $f$ e $d()$ é a medida da distância entre a forma X e a
+    reconstrução da forma $f(I)$
+
+\end{frame}
+
+%%%%%%
+
+\section{Método estatístico}
+
+\begin{frame}
+\frametitle{Problema}
+
+Temos uma coleção de imagens em escala de cinza 2x2. Identificamos cada imagem
+    como tendo uma "escada" como padrão ou não. Aqui está um subconjunto
+    deles.
+\end{frame}
+
+\framedgraphic{Problema}{images/unnamed-chunk-3-1.png}
+
+
+\begin{frame}
+\frametitle{Descrição da rede}
+
+Nosso problema é de classificação binária. Isso significa que nossa rede pode
+    ter um único nó de saída que prevê a probabilidade de que uma imagem
+    recebida represente escadas.
+\end{frame}
+
+\begin{frame}
+\frametitle{Descrição da rede}
+
+No entanto, optaremos por interpretar o problema como um problema de
+    classificação de várias classes - aquele em que nossa camada de saída
+    possui dois nós que representam ``probabilidade de escada" e
+    ``probabilidade de outra coisa".
+
+Isso é desnecessário, mas nos dará uma ideia de como poderíamos estender a
+    tarefa para mais classes.  No futuro, podemos querer classificar
+    \{``padrão de escadas", ``padrão de piso", ``padrão de teto" ou ``outra
+    coisa"\}.
+\end{frame}
+
+\begin{frame}
+\frametitle{Descrição da rede}
+
+Nossa medida de sucesso pode ser algo como taxa de precisão, mas para
+    implementar a retropropagação (o procedimento de ajuste), precisamos
+    escolher uma função de perda conveniente e diferenciável, como entropia
+    cruzada.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{entropia cruzada}
+A ``entropia cruzada"  entre dois
+    \href{distribuição_de_probabilidade}{distribuição de probabilidade} s
+    \(p\) e \(q\) sobre o mesmo conjunto subjacente de eventos mede o número
+    médio de \url{bit} s necessários para identificar um evento extraído do
+    conjunto se um esquema de codificação usado para o conjunto for otimizado
+    para uma distribuição de probabilidade estimada \(q\), em lugar da
+    distribuição verdadeira \(p\).
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Problema}
+Nosso conjunto de dados de treinamento consiste em imagens em escala de cinza.
+Cada imagem tem 2 pixels de largura por 2 pixels de altura, cada pixel
+representando uma intensidade entre 0 (branco) e 255 (preto). Se rotularmos
+cada intensidade de pixel como p1, p2, p3, p4, podemos representar cada imagem
+como um vetor numérico que pode alimentar nossa rede neural.
+\end{frame}
+
+
